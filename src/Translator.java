@@ -1,9 +1,12 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Translator {
 
+    ArrayList<String> savedMorseCode = new ArrayList<>();
+    ArrayList<String> savedLetters = new ArrayList<>();
+    int listPosition = 0;
 
-    String translatedToMorse ="";
     char [] letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
             'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', ',', '?'};
     String[] morse = {"*-", "-***", "-*-*", "-**", "*", "**-*", "--*", "****", "**",
@@ -38,18 +41,59 @@ public class Translator {
         return getEngToMorse().get(e);
     }
 
-    public void wordToMorse(String b) {
-        String [] morseInput = b.split("");
-        for (int i =0; i < morseInput.length; i++){
-            for (int j =0; j < morse.length; j++){
-                if(morse[j]==morseInput[i]){
-                   translatedToMorse+= morse[j] +" ";
-                }
-            }
+    public void splitMorseCode(String b) {
+        int firstPosition = listPosition;
+        String [] morseInput = b.split(" ");
+        for (int i = 0; i<morseInput.length; i++) {
+            savedMorseCode.add(firstPosition, morseInput[i]);
+            listPosition++;
         }
     }
 
-    public String getWordToMorse() {
-        return translatedToMorse;
+    public void getCodeToEnglish(){
+        String morse;
+        for (int i= 0; i< savedMorseCode.size(); i++){
+            morse = toEng(savedMorseCode.get(i));
+            savedLetters.add(morse);
+        }
     }
+
+    public String printSavedLetters(){
+        String printEng="";
+        for (int i = 0; i<savedLetters.size(); i++){
+            printEng = savedLetters.get(i) + printEng;
+        }
+        return printEng;
+    }
+    public ArrayList<String> getSavedLetters() {
+        return savedLetters;
+    }
+
+    public void wordToMorse(String b) {
+        int secondPosition = listPosition;
+        String [] engInput = b.split("");
+        for (int i = 0; i<engInput.length; i++) {
+            savedLetters.add(secondPosition, engInput[i]);
+            listPosition++;
+        }
+    }
+
+    public void getEnglishToCode() {
+        String eng;
+        for (int i = 0; i < savedLetters.size(); i++){
+            eng = toMorse(savedLetters.get(i));
+            savedMorseCode.add(eng);
+        }
+    }
+
+    public String printSavedCode() {
+        String printMorse = "";
+        for (int i = 0; i < savedMorseCode.size(); i++){
+            printMorse = savedMorseCode.get(i) + printMorse +" ";
+        }
+        return printMorse;
+    }
+
+
+
 }
