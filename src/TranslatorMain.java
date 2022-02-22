@@ -5,7 +5,7 @@ public class TranslatorMain {
 
         Scanner scan = new Scanner(System.in);
         Translator translate = new Translator();
-        boolean wrongInput = true;
+
 
         System.out.println("Welcome to the translator!");
         System.out.println("Please, choose what you would like to translate from Morse och English,");
@@ -15,21 +15,19 @@ public class TranslatorMain {
 
         choice = scan.nextLine().toUpperCase();
         switch (choice) {
-            case "M":
+            case "M" -> {
                 String morseInput = scan.nextLine().toUpperCase();
                 translate.splitMorseCode(morseInput);
                 translate.getCodeToEnglish();
                 System.out.println(translate.printSavedLetters());
-                break;
-            case "E":
+            }
+            case "E" -> {
                 String engInput = scan.nextLine().toUpperCase();
                 translate.splitWordToLetters(engInput);
                 translate.getEnglishToCode();
                 System.out.println(translate.printSavedCode());
-                break;
-            default:
-                System.out.println("Please only enter M or E");
-
+            }
+            default -> System.out.println("Please only enter M or E");
         }
 
 

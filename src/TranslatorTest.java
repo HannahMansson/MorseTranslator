@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TranslatorTDD {
+public class TranslatorTest {
 
     @Test
     public void testStarToE(){
@@ -51,11 +51,9 @@ public class TranslatorTDD {
         String morse = "**** * *---";
         translate.splitMorseCode(morse);
 
-        String actual = morse;
-
 
         String expected = "**** * *---";
-        assertEquals(expected, actual);
+        assertEquals(expected, morse);
     }
 
     @Test
@@ -84,11 +82,8 @@ public class TranslatorTDD {
         translate.splitWordToLetters(eng);
 
 
-        String actual = eng;
-
-
         String expected = "HEJ";
-        assertEquals(expected, actual);
+        assertEquals(expected, eng);
     }
 
     @Test
