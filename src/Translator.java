@@ -8,11 +8,11 @@ public class Translator {
     int listPosition = 0;
 
     char [] letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
-            'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', ',', '?'};
+            'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', ',', '?', ' '};
     String[] morse = {"*-", "-***", "-*-*", "-**", "*", "**-*", "--*", "****", "**",
             "*---", "-*-", "*-**", "--", "-*", "---", "*--*", "--*-", "*-*", "***", "-", "**-", "***-", "*--",
             "-**-", "-*--", "--**", "*----", "**---", "***--", "****-", "*****", "-****", "--***", "---**", "----*",
-            "-----", "*-*-*-", "--**--", "**--**"};
+            "-----", "*-*-*-", "--**--", "**--**", " "};
 
     HashMap<String, String> morseToEng = new HashMap<>();
 
@@ -65,11 +65,9 @@ public class Translator {
         }
         return printEng;
     }
-    public ArrayList<String> getSavedLetters() {
-        return savedLetters;
-    }
 
-    public void wordToMorse(String b) {
+
+    public void splitWordToLetters(String b) {
         int secondPosition = listPosition;
         String [] engInput = b.split("");
         for (int i = 0; i<engInput.length; i++) {
@@ -89,7 +87,7 @@ public class Translator {
     public String printSavedCode() {
         String printMorse = "";
         for (int i = 0; i < savedMorseCode.size(); i++){
-            printMorse = savedMorseCode.get(i) + printMorse +" ";
+            printMorse = savedMorseCode.get(i)+" " + printMorse;
         }
         return printMorse;
     }

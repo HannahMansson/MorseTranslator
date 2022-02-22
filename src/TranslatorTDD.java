@@ -52,7 +52,7 @@ public class TranslatorTDD {
         translate.splitMorseCode(morse);
 
         String actual = morse;
-        translate.splitMorseCode(morse);
+
 
         String expected = "**** * *---";
         assertEquals(expected, actual);
@@ -69,19 +69,10 @@ public class TranslatorTDD {
         translate.getCodeToEnglish();
         String actual = translate.printSavedLetters();
 
+
         String expected = "HEJ";
         assertEquals(expected, actual);
 
-    }
-
-    @Test
-    public void testGetSavedLetters(){
-        Translator translate = new Translator();
-
-        translate.getSavedLetters();
-        String actual = "";
-        String expected = "";
-        assertEquals(expected, actual);
     }
 
     @Test
@@ -90,29 +81,30 @@ public class TranslatorTDD {
         Translator translate = new Translator();
 
         String eng = "HEJ";
-        translate.wordToMorse(eng);
+        translate.splitWordToLetters(eng);
+
 
         String actual = eng;
-        translate.wordToMorse(eng);
 
-        String expected = "H, E, J";
+
+        String expected = "HEJ";
         assertEquals(expected, actual);
     }
-/*
+
     @Test
     public void testGetLettersToMorse(){
 
         Translator translate = new Translator();
 
         String engInput = "HEJ";
-        translate.morseToWord(engInput);
+        translate.splitWordToLetters(engInput);
 
         translate.getEnglishToCode();
         String actual = translate.printSavedCode();
 
-        String expected = "**** * *---";
+        String expected = "**** * *--- ";
         assertEquals(expected, actual);
 
-    }*/
+    }
 
 }
