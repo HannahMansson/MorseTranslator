@@ -45,61 +45,22 @@ public class TranslatorTest {
     }
 
     @Test
-    public void testSplitMorseCode(){
-
+    public void testHEJToMorse() {
+        //Arrange
         Translator translate = new Translator();
-        String morse = "**** * *---";
-        translate.splitMorseCode(morse);
-
-
-        String expected = "**** * *---";
-        assertEquals(expected, morse);
+        //Act
+        String actual = translate.EngToMorse("HEJ");
+        //Assert
+        assertEquals("**** * *---", actual);
     }
 
     @Test
-    public void testGetCodeToEnglish(){
-
+    public void testMorseToHEJ() {
+        //Arrange
         Translator translate = new Translator();
-
-        String morseInput = "**** * *---";
-        translate.splitMorseCode(morseInput);
-
-        translate.getCodeToEnglish();
-        String actual = translate.printSavedLetters();
-
-
-        String expected = "HEJ";
-        assertEquals(expected, actual);
-
+        //Act
+        String actual = translate.MorseToEng("**** * *---");
+        //Assert
+        assertEquals("HEJ", actual);
     }
-
-    @Test
-    public void testSplitWordIntoLetters(){
-
-        Translator translate = new Translator();
-
-        String eng = "HEJ";
-        translate.splitWordToLetters(eng);
-
-
-        String expected = "HEJ";
-        assertEquals(expected, eng);
-    }
-
-    @Test
-    public void testGetLettersToMorse(){
-
-        Translator translate = new Translator();
-
-        String engInput = "HEJ";
-        translate.splitWordToLetters(engInput);
-
-        translate.getEnglishToCode();
-        String actual = translate.printSavedCode();
-
-        String expected = "**** * *--- ";
-        assertEquals(expected, actual);
-
-    }
-
 }
